@@ -39,6 +39,34 @@ a {
   margin: 0 auto;
 }
 
+.back-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+}
+
+.back-button a,
+.back-button button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(44, 122, 123, 0.2);
+  border-radius: 999px;
+  background: rgba(44, 122, 123, 0.12);
+  color: var(--primary-dark);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.back-button a:hover,
+.back-button button:hover {
+  transform: translateY(-1px);
+  background: rgba(44, 122, 123, 0.18);
+}
+
 .hero {
   background: linear-gradient(180deg, #d7f2f2 0%, rgba(255, 255, 255, 0.85) 100%);
   padding: 4rem 0 6rem;
@@ -206,6 +234,15 @@ p {
   margin-bottom: 1.5rem;
   justify-content: center;
 }
+.adopt-card {
+  margin-top: 2rem;
+}
+.adopt-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+}
+
 .card:hover,
 .card:focus-within {
   transform: scale(1.02);
@@ -267,7 +304,7 @@ p {
   margin-top: 0;
 }
 
-.project-link {
+.form-link {
   display: inline-block;
   margin-top: 1rem;
   color: var(--primary);
