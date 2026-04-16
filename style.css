@@ -1,5 +1,16 @@
+@font-face {
+  font-family: 'Mileast';
+  src: url('mileast/Mileast.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Mileast';
+  src: url('mileast/Mileast Italic.otf') format('opentype');
+  font-style: italic;
+}
+
 :root {
-  --bg: #f7f8fc;
+  --bg: hsl(0, 0%, 100%);
   --surface: #ffffff;
   --primary: #2c7a7b;
   --primary-dark: #285e61;
@@ -7,7 +18,41 @@
   --muted: #64748b;
   --border: #e2e8f0;
   --shadow: 0 18px 60px rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 20px 50px rgba(15, 23, 42, 0.05);
+  --shadow-medium: 0 16px 40px rgba(15, 23, 42, 0.08);
+  --shadow-strong: 0 8px 16px rgba(0, 0, 0, 0.8);
+  --shadow-lift: 0 28px 70px rgba(15, 23, 42, 0.14);
+  --shadow-focus: 0 24px 55px rgba(15, 23, 42, 0.12);
+  --shadow-highlight: 0 4px 12px rgba(0, 0, 0, 0.2);
   --radius: 24px;
+  --header-bg: #1d2c25;
+  --header-text: #ffffff;
+  --header-highlight: rgba(255, 255, 255, 0.1);
+  --nav-link: #90caf9;
+  --nav-link-hover: #ffffff;
+  --primary-border: rgba(44, 122, 123, 0.2);
+  --primary-transparent: rgba(44, 122, 123, 0.12);
+  --primary-hover: rgba(44, 122, 123, 0.18);
+  --hero-bg-start: #d7f2f2;
+  --hero-bg-end: rgba(255, 255, 255, 0.85);
+  --hero-photo-bg-start: #fefefe;
+  --hero-photo-bg-end: #d7f2f2;
+  --card-glow: rgba(85, 173, 255, 1);
+  --card-text-glow: rgba(25, 236, 236, 1);
+  --text-dark: #000000;
+  --text-emphasis: #00192d;
+  --danger: #ff0000;
+  --btn-secondary-bg: #52747a;
+  --form-bg: #f8fafc;
+  --footer-bg: #eef4f6;
+  --pulse-color: rgba(144, 202, 249, 0.7);
+  --pulse-color-fade: rgba(144, 202, 249, 0);
+  --backend-surface: rgba(38, 50, 56, 0.9);
+  --backend-shadow: rgba(0, 0, 0, 0.5);
+  --backend-hover-shadow: rgba(144, 202, 249, 0.4);
+  --backend-accent-start: #0d47a1;
+  --backend-accent-end: #90caf9;
+  --header-title-shadow: rgba(0, 0, 0, 0.9);
   font-size: 16px;
 }
 
@@ -15,14 +60,24 @@
   box-sizing: border-box;
 }
 
+.huellas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--bg);
+  font-family: 'Mileast', Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(rgb(235, 255, 242),rgb(133, 237, 168),rgb(77, 130, 90),rgb(61, 132, 85),rgb(6, 60, 33),rgb(9, 73, 49));
+  background-size: 200% 200%;
   color: var(--text);
+  z-index: 2;
 }
 
 body {
@@ -40,11 +95,11 @@ a {
 }
 
 header {
-  background: #585858;
-  color: #ffffff;
+  background: var(--header-bg);
+  color: var(--header-text);
   padding: 30px;
   text-align: center;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+  box-shadow: var(--shadow-strong);
   position: relative;
   overflow: hidden;
 }
@@ -56,7 +111,7 @@ header::before {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background: linear-gradient(90deg, transparent, var(--header-highlight), transparent);
   animation: shimmer 3s infinite;
 }
 
@@ -68,7 +123,7 @@ header::before {
 header h1 {
   margin: 0;
   font-size: 3em;
-  text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
+  text-shadow: 3px 3px 6px var(--header-title-shadow);
   animation: slideIn 1.5s ease-out;
 }
 
@@ -89,7 +144,7 @@ nav li {
 }
 
 nav a {
-  color: #90caf9;
+  color: var(--nav-link);
   text-decoration: none;
   font-weight: bold;
   transition: all 0.4s ease;
@@ -103,7 +158,7 @@ nav a::after {
   height: 2px;
   bottom: -5px;
   left: 50%;
-  background: #90caf9;
+  background: var(--nav-link);
   transition: all 0.4s ease;
 }
 
@@ -113,8 +168,8 @@ nav a:hover::after {
 }
 
 nav a:hover {
-  color: #ffffff;
-  text-shadow: 0 0 10px #90caf9;
+  color: var(--nav-link-hover);
+  text-shadow: 0 0 10px var(--nav-link);
 }
 
 .back-button {
@@ -130,9 +185,9 @@ nav a:hover {
   align-items: center;
   gap: 0.5rem;
   padding: 0.85rem 1rem;
-  border: 1px solid rgba(44, 122, 123, 0.2);
+  border: 1px solid var(--primary-border);
   border-radius: 999px;
-  background: rgba(44, 122, 123, 0.12);
+  background: var(--primary-transparent);
   color: var(--primary-dark);
   font-weight: 600;
   cursor: pointer;
@@ -142,11 +197,11 @@ nav a:hover {
 .back-button a:hover,
 .back-button button:hover {
   transform: translateY(-1px);
-  background: rgba(44, 122, 123, 0.18);
+  background: var(--primary-hover);
 }
 
 .hero {
-  background: linear-gradient(180deg, #d7f2f2 0%, rgba(255, 255, 255, 0.85) 100%);
+  background: linear-gradient(180deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
   padding: 4rem 0 6rem;
 }
 
@@ -192,7 +247,7 @@ nav a:hover {
   aspect-ratio: 1 / 1;
   border-radius: 36px;
   overflow: hidden;
-  background: linear-gradient(180deg, #fefefe 0%, #d7f2f2 100%);
+  background: linear-gradient(180deg, var(--hero-photo-bg-start) 0%, var(--hero-photo-bg-end) 100%);
   display: grid;
   place-items: center;
   box-shadow: var(--shadow);
@@ -210,7 +265,7 @@ nav a:hover {
 .hero__photo:hover,
 .hero__photo:focus-within {
   transform: scale(1.04);
-  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.14);
+  box-shadow: var(--shadow-lift);
 }
 
 .hero__photo:hover img,
@@ -240,24 +295,24 @@ main {
 
 #carru .text h2 {
   font-size: 3em;
-  color: #000000;
+  color: var(--text-dark);
   margin-bottom: 20px;
   text-align: left;
 }
 
 .text h2:hover {
   font-size: 9em;
-  color: #000000;
-  text-shadow: 0 0 10px #00192d;
+  color: var(--text-dark);
+  text-shadow: 0 0 10px var(--text-emphasis);
 }
 
 #carru hr {
-  color: #ff0000;
+  color: var(--danger);
 }
 
 #carru .text p {
   font-size: 2em;
-  color: #000000;
+  color: var(--text-dark);
   max-width: 600px;
   text-align: left;
 }
@@ -274,22 +329,22 @@ main {
   border-radius: 999px;
   font-weight: 600;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  background-color: #52747a;
+  background-color: var(--btn-secondary-bg);
   margin: 1rem 0;
 }
 
 .btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-highlight);
 }
 
 .btn--primary {
   background: var(--primary);
-  color: white;
+  color: var(--surface);
 }
 
 .btn--secondary {
-  background: rgba(44, 122, 123, 0.12);
+  background: var(--primary-transparent);
   color: var(--primary-dark);
 }
 
@@ -326,10 +381,77 @@ p {
 .projects-grid {
   display: grid;
   gap: 1.5rem;
+  z-index: 2;
 }
 
 .catalog-grid {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+#carrusel {
+  min-height: 50vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: backgroundSlide3 12s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes backgroundSlide3 {
+  0% {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCll1FGRzv5RL8CKKYykKkc1KUFFCpuDEuDg&s');
+  }
+  33% {
+    background-image: url('https://bogota.gov.co/sites/default/files/styles/1050px/public/rescate_animal_ok.jpg');
+  }
+  66% {
+    background-image: url('https://media.cnn.com/api/v1/images/stellar/prod/trax-heroes-00-03-05-27-still005.png?c=16x9&q=w_1280,c_fill');
+  }
+  100% {
+    background-image: url('https://img.freepik.com/foto-gratis/perro-rescate-disfrutando-ser-mascota-mujer-refugio_23-2148682929.jpg?semt=ais_hybrid&w=740&q=80');
+}
+}
+#carrusel:hover {
+  min-height: 50vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: backgroundSlide2 25s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes backgroundSlide2 {
+  0% {
+    background-image: url('https://preview.redd.it/funniest-pictures-of-cats-v0-jrl0ibqtt79f1.jpg?width=1080&crop=smart&auto=webp&s=9575061436146eed10ce691c76b02cc2721018d0');
+  }
+  11% {
+    background-image: url('https://i.pinimg.com/736x/52/f2/f3/52f2f36128acfbd9c776ac76e1262a67.jpg');
+  }
+  22% {
+    background-image: url('https://preview.redd.it/post-the-best-cat-memes-you-got-in-the-comments-please-v0-kg82lbnu0ste1.png?auto=webp&s=e6f9eee86484f5de3f4e31f3c33b2d07fb982bd5');
+  }
+  33% {
+    background-image: url('https://preview.redd.it/silly-cat-memes-for-you-v0-1hx3sdcn423d1.jpg?width=224&format=pjpg&auto=webp&s=f7e3e143dbab2e682ff904a41cb9b9caab14c898');
+  }
+  44% {
+    background-image: url('https://preview.redd.it/silly-cat-memes-for-you-v0-l2ru6ecn423d1.jpg?width=250&format=pjpg&auto=webp&s=77896ae9c21f714f74284ffd8d7a2c2b9b4e3684');
+  }
+  55% {
+    background-image: url('https://preview.redd.it/silly-cat-memes-for-you-v0-10jxilcn423d1.jpg?width=220&format=pjpg&auto=webp&s=bf63bbdb7e895c9e4f59eebd92bfdf6c554bb2c4');
+  }
+  66% {
+    background-image: url('https://preview.redd.it/silly-cat-memes-for-you-v0-6l9ihdcn423d1.jpg?width=959&format=pjpg&auto=webp&s=aaf93b1e7736d03347f2c7e7ed562bff5848c194');
+  }
+  77% {
+    background-image: url('https://images3.memedroid.com/images/UPLOADED29/65c9cca3c0afa.webp');
+  }
+  88% {
+    background-image: url('https://m.media-amazon.com/images/I/51MGFZsS4+L.jpg');
+  }
+  100% {
+    background-image: url('https://images7.memedroid.com/images/UPLOADED322/634084e6e7085.webp');
+  }
 }
 
 .catalog-card,
@@ -338,8 +460,9 @@ p {
   border: 1px solid var(--border);
   border-radius: 28px;
   padding: 1.75rem;
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.05);
+  box-shadow: var(--shadow-soft);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  z-index: 2;
 }
 
 .catalog-card {
@@ -353,28 +476,29 @@ p {
   height: auto;
   margin: 0 auto 1rem;
   object-fit: cover;
+  z-index: 2;
 }
 
 .catalog-card img:hover {
   rotate: 5deg;
-  box-shadow: rgb(85, 173, 255) 0px 0px 10px;
+  box-shadow: var(--card-glow) 0px 0px 10px;
 }
 
 .catalog-card:hover {
-  color: #000000;
-  text-shadow: rgb(25, 236, 236) 0px 0px 10px;
+  color: var(--text-dark);
+  text-shadow: 0px 0px 10px var(--card-text-glow);
 }
 
 .catalog-card:hover,
 .catalog-card:focus-within {
   transform: scale(1.02);
-  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.1);
+  box-shadow: var(--shadow-focus);
 }
 
 .project-card:hover,
 .project-card:focus-within {
   transform: scale(0.98);
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  box-shadow: var(--shadow-medium);
 }
 
 .card {
@@ -384,6 +508,7 @@ p {
   padding: 2rem;
   box-shadow: var(--shadow);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  z-index: 2;
 }
 
 .card img {
@@ -392,22 +517,25 @@ p {
   border-radius: var(--radius);
   margin-bottom: 1.5rem;
   justify-content: center;
+  z-index: 2;
 }
 
 .adopt-card {
   margin-top: 2rem;
+  z-index: 2;
 }
 
 .adopt-card h3 {
   margin-top: 0;
   margin-bottom: 0.75rem;
   font-size: 1.4rem;
+  z-index: 2;
 }
 
 .card:hover,
 .card:focus-within {
   transform: scale(1.02);
-  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.12);
+  box-shadow: var(--shadow-focus);
 }
 
 .card--info ul {
@@ -435,7 +563,7 @@ p {
 
 .contact-info p {
   margin: 0.75rem 0;
-  color: var(--muted);
+  color: rgb(0, 23, 6);
 }
 
 .contact-form {
@@ -456,7 +584,7 @@ p {
   border-radius: 18px;
   padding: 1rem 1.1rem;
   font: inherit;
-  background: #f8fafc;
+  background: var(--form-bg);
   color: var(--text);
 }
 
@@ -466,7 +594,7 @@ p {
 
 .footer {
   padding: 1.5rem 0 2rem;
-  background: #eef4f6;
+  background: var(--footer-bg);
 }
 
 .footer__content {
@@ -512,7 +640,7 @@ table,
 table:hover,
 .hover-expand:hover {
   transform: scale(1.02);
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+  box-shadow: var(--shadow-soft);
 }
 
 @keyframes backgroundSlide {
@@ -539,6 +667,9 @@ table:hover,
   .hero {
     padding-top: 3rem;
   }
+  .adopt-card {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 600px) {
@@ -552,5 +683,8 @@ table:hover,
 
   .btn {
     width: 100%;
+  }
+  .adopt-card {
+    grid-template-columns: 1fr;
   }
 }
